@@ -48,7 +48,7 @@ def test_app_runs_without_exception_and_shows_structure():
     at = run()
     assert not at.exception
     assert "OrbitX" in at.title[0].value
-    assert [t.label for t in at.tabs] == ["🗺️ Map", "📈 Telemetry", "🔭 Passes", "🎯 Missions"]
+    assert [t.label for t in at.tabs] == ["🗺️ Map", "📈 Telemetry", "🧭 Orbit Lab", "🔭 Passes", "🎯 Missions"]
     labels = {m.label for m in at.metric}
     assert {"Latitude", "Longitude", "Altitude", "Orbital speed"} <= labels
 
@@ -223,3 +223,11 @@ def test_toolbar_mode_is_configured_to_viewer():
     content = config_path.read_text(encoding="utf-8")
     assert 'toolbarMode = "viewer"' in content
 
+
+
+def test_orbit_lab_tab_renders_scrubber_and_export():
+    at = run()
+    assert not at.exception
+    assert any("Trajectory time machine" in h.value for h in at.subheader)
+    assert any("Jump forward from the current calculated position" in s.label for s in at.slider)
+    assert any("Export selected position" in b.label for b in at.button)
