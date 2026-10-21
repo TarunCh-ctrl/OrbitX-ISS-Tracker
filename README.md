@@ -34,7 +34,7 @@ Orbital Data (TLE) ──> Orbital Propagation (SGP4) ──> 3D Position & Velo
 1. **Orbital Data (TLE):** OrbitX downloads Two-Line Element (TLE) sets containing mean orbital parameters at a specific observation instant called the *epoch*.
 2. **Propagation (SGP4):** The Simplified General Perturbations 4 (SGP4) model (via the Skyfield library) evaluates gravitational forces (including Earth oblateness $J_2, J_3, J_4$) and atmospheric drag to calculate the 3D position vector ($\vec{r}$) and velocity vector ($\vec{v}$) at the current UTC time.
 3. **Coordinate Reduction (WGS84):** The 3D geocentric coordinates are projected onto the WGS84 reference ellipsoid to produce geographic latitude, longitude, and height above the surface.
-4. **Display:** The dashboard visualizes the sub-satellite point, plots forward ground tracks, and calculates observer sightlines.
+4. **Display:** The dashboard visualizes the sub-satellite point, plots forward ground tracks, calculates observer sightlines, and lets users scrub through future propagated positions in the Orbit Lab tab.
 
 > **Important Distinction:** A **`LIVE`** source badge indicates successful retrieval of fresh orbital elements from the configured network endpoint (CelesTrak, ARISS, or WhereTheISS.at). It does **not** mean the displayed position is a direct onboard GPS measurement; it confirms that the mathematical model is propagating from the newest available tracking fit.
 
@@ -72,6 +72,7 @@ OrbitX-ISS-Tracker/
 │   ├── app.py                # Main application entry point
 │   ├── background.py         # Glassmorphism styling and optional video background
 │   ├── charts.py             # Plotly telemetry and offline track figures
+│   ├── orbit_lab.py           # Time scrubber, selected-position telemetry, and CSV export
 │   ├── components.py         # Header, status badge, and telemetry metric cards
 │   ├── data.py               # Lightweight data loading wrappers
 │   ├── map_view.py           # Folium Leaflet map and marker builder

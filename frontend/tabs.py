@@ -14,9 +14,10 @@ from backend.missions import MISSIONS
 from backend.orbital_engine import PredictionError, split_track_segments
 from backend.pass_predictor import passes_to_frame
 from frontend.data import cached_passes
+from frontend.orbit_lab import render_orbit_lab
 from backend.validation import ValidationError
 
-TAB_LABELS = ["🗺️ Map", "📈 Telemetry", "🔭 Passes", "🎯 Missions"]
+TAB_LABELS = ["🗺️ Map", "📈 Telemetry", "🧭 Orbit Lab", "🔭 Passes", "🎯 Missions"]
 
 
 def render_map_tab(position, track, observer, controls, illustrative: bool) -> None:
@@ -111,3 +112,7 @@ def render_missions_tab() -> None:
     mission = next(m for m in MISSIONS if m.key == key)
     st.caption(f"About {mission.minutes} minutes · file: missions/{mission.filename}")
     st.markdown(mission.read())
+
+
+def render_orbit_lab_tab(tle, position, track, illustrative: bool = False) -> None:
+    render_orbit_lab(tle, position, track, illustrative=illustrative)
