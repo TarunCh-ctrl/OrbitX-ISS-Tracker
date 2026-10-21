@@ -71,7 +71,8 @@ OrbitX-ISS-Tracker/
 ├── frontend/                 # Presentation layer (Streamlit)
 │   ├── app.py                # Main application entry point
 │   ├── background.py         # Glassmorphism styling and optional video background
-│   ├── charts.py             # Plotly telemetry and offline track figures\n│   ├── orbit_lab.py          # Time scrubber, selected-position telemetry, and CSV export
+│   ├── charts.py             # Plotly telemetry and offline track figures
+│   ├── orbit_lab.py           # Time scrubber, selected-position telemetry, and CSV export
 │   ├── components.py         # Header, status badge, and telemetry metric cards
 │   ├── data.py               # Lightweight data loading wrappers
 │   ├── map_view.py           # Folium Leaflet map and marker builder
