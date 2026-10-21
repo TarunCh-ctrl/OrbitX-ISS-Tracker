@@ -86,11 +86,13 @@ def render_live_dashboard() -> None:
         st.warning(distance_note)
 
     # ---------------------------------------------------------------------------------- tabs
-    tab_map, tab_charts, tab_passes, tab_missions = st.tabs(tabs.TAB_LABELS)
+    tab_map, tab_charts, tab_orbit_lab, tab_passes, tab_missions = st.tabs(tabs.TAB_LABELS)
     with tab_map:
         tabs.render_map_tab(position, track, observer, controls, illustrative)
     with tab_charts:
         tabs.render_charts_tab(track, illustrative, data.source.value.upper())
+    with tab_orbit_lab:
+        tabs.render_orbit_lab_tab(tle, position, track, illustrative)
     with tab_passes:
         tabs.render_passes_tab(tle, observer, start, controls)
     with tab_missions:
