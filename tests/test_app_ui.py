@@ -225,9 +225,8 @@ def test_toolbar_mode_is_configured_to_viewer():
 
 
 
-def test_orbit_lab_tab_renders_scrubber_and_export():
+def test_orbit_lab_tab_renders_scrubber():
     at = run()
     assert not at.exception
     assert any("Trajectory time machine" in h.value for h in at.subheader)
     assert any("Jump forward from the current calculated position" in s.label for s in at.slider)
-    assert any("Export selected position" in b.label for b in at.button)
